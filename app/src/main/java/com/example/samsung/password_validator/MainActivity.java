@@ -1,3 +1,9 @@
+/**
+ * This activity takes a user's password as input, then displays the strength
+ * of the password as either "Very weak", "Weak", "Moderate", "Strong", or "Very Strong"
+ *
+ * @author Sean Mahoney B00752957
+ */
 package com.example.samsung.password_validator;
 
 import android.os.Bundle;
@@ -8,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,5 +56,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendMessage(View view){
+        // Capture the text editor
+        EditText password = (EditText) findViewById(R.id.editText2);
+        // Store the password entered by the user
+        String message = password.getText().toString();
+        // Capture the text display
+        TextView display =(TextView) findViewById(R.id.text_display);
+        Password password1 =new Password();
+        // Pass the password into the "strength_message" method and display the
+        // string returned by the method
+        display.setText(password1.strength_message(message));
     }
 }
